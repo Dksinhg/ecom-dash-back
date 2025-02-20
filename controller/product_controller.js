@@ -34,6 +34,7 @@ exports.createProduct = async (req, resp) => {
       // Simages
     });
     await productItem.save();
+    // console.log(productItem)
     // resp.status(201).json(newItem);
 
     // const thumbnail = req.files.thumbnail;
@@ -280,5 +281,3 @@ exports.deleteProduct = async (req, resp) => {
     });
   }
 };
-
-
