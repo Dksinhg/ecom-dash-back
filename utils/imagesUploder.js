@@ -1,6 +1,7 @@
 const cloudinary = require("cloudinary").v2;
 const { CloudinaryStorage } = require('multer-storage-cloudinary');
 const multer = require('multer');
+const uniqueId = Date.now();
 
 
 // exports.uploadTocloudinary = async (file, folder, height, quality)=>{
@@ -27,9 +28,13 @@ const storage = new CloudinaryStorage({
     try {
       return {
         folder: 'upload',
+        unique_filename: true,
+        overwrite:false,
+        invalidate:false,
+        public_id:`img_${uniqueId}`,
         // format: 'png', // or use file.mimetype.split('/')[1] for dynamic format
-        allowed_formats: ['jpg', 'png'],
-        public_id: 'computed-filename-using-request',
+        // allowed_formats: ['jpg', 'png'],
+        // public_id: 'computed-filename-using-request',
       };
     } catch (error) {
       console.error('Error configuring Cloudinary storage:', error);
